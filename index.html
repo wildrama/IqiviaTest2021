@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>IQVIA TEST- Ramiro Balladares, Argentina</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="iqviaTest.css">
+</head>
+
+<body>
+
+  <section class="main">
+    <div class="container">
+      <div class="wrapper">
+        <ul class="step-bar">
+          <li id="first-step" class="step-bar-item ">
+            <h2 class="s1">Update Response</h2>
+            <div class="first-step-input">
+              <div class="input1">
+                <!-- <input class="hide" type="radio" name="consent" value="0"> -->
+                <label for="consentYes">
+                  <input class="radio-input1" type="radio" id="consentYes" name="consent" value="consentYes">
+                  <span>I give my consent</span> </label>
+              </div>
+
+              <div class="input1">
+                <label for="consentNo">
+                  <input class="radio-input1" type="radio" id="consentNo" name="consent" value="consentNo">
+                  <span>I do not give my consent</span> </label>
+              </div>
+
+              <p id="resultA" class="pChecked"></p>
+
+            </div>
+          </li>
+          <li id="second-step" class="step-bar-item muted continue-step ">
+            <h2 class="s2">Select a method</h2>
+            <div class="second-step-input">
+
+              <div class="label-second-step">
+                <div class="msg">
+                  <!-- <input class="hide" type="radio" name="second-step" value="0"> -->
+                  <label for="message">
+                    <input class="radio-input2" type="radio" id="message" name="second-step" value="message">
+
+                    <span>Text message (SMS)</span>
+                  </label>
+                </div>
+                <div class="voice">
+                  <label for="voice">
+                    <input class="radio-input2" type="radio" id="voice" name="second-step" value="voice">
+
+                    <span>Voice call</span> </label>
+                </div>
+                <div class="email">
+                  <label for="email">
+                    <input class="radio-input2" type="radio" id="email" name="second-step" value="email">
+
+                    <span>Email</span> </label>
+                </div>
+
+              </div>
+
+              <div class="user-data">
+                <div class="msgUser">
+                  *** *** 3456
+                </div>
+                <div class="voiceUser">
+                  *** *** 3456
+                </div>
+                <div class="emailUser">
+                  f****@iqvia.com
+                </div>
+              </div>
+            </div>
+            <div class="codeDiv">
+              <button class="buttonSend">Send Code</button>
+              <span id="codeAlert" class=""></span>
+            </div>
+          </li>
+          <li id="third-step" class="step-bar-item muted continue-step ">
+            <h2 class="s3">Enter code</h2>
+            <div class="third-step ">
+
+              <p id="messageCode">An SMS has been sent to your mobile phone.
+                Please check your messages ( *** *** 3456 ) to obtain the validation code</p>
+
+              <div class="inputCodeDiv">
+                <input id="inputCode" class="input-code" onkeypress="return justNumbers(event)" type="text"
+                  placeholder="Code">
+
+                <p id="errorMsg" class="error">Only numbers are accepted</p>
+
+              </div>
+
+
+              <a id="reSend" class="resend" href="#">Resend Code</a>
+
+
+            </div>
+          </li>
+        </ul>
+
+      </div>
+
+      <div class="verifyDiv">
+        <a id="verify" class="disabled verify" href="#verify">Verify</a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <script>
+
+    let errorMsg = document.getElementById('errorMsg');
+    let inputBox = document.getElementById('inputCode');
+
+    function justNumbers(evt) {
+
+      evt = (evt) ? evt : window.event;
+
+      let charCode = (evt.which) ? evt.which : evt.keyCode;
+
+      if (charCode > 31 && (charCode == 45 || charCode < 48 || charCode > 57)) {
+        errorMsg.classList.remove('error');
+        errorMsg.classList.add('errorMsg');
+        errorMsg
+        inputBox.classList.add('notVerifiedError');
+        inputBox.style.outline = "2px solid red";
+
+
+
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+
+  <script src="iqviaTest.js"></script>
+
+
+
+  <!--Ramiro Balladares Chacoma, Argentina-->
+</body>
+
+</html>
